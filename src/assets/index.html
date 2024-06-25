@@ -1,8 +1,22 @@
-<template>
-  <header id="heroSection" class="header main" style="padding-top: 10px; color: white">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYD Technology.</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="icon" href='favicons/favicon.ico'/>
+</head>
+<body>
+    <!-- Navbar -->
+    <header id="heroSection" class="header main" style="padding-top: 10px; color: white">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid" style="display:flex; justify-content: center">
-                <img src='../assets/MYD Technology Logo.png' alt="MYD Technology.">
+                <img src='MYD Technology Logo.png'alt="MYD Technology.">
                 <button class="navbar-toggler navButton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -61,15 +75,15 @@
             <div class="col-10">
                 <div class="row" style="display: flex; justify-content: center">
                     <div class="col-3 whatWeDoCards" style="background-color: white; box-shadow: 1px 4px 10px grey;">
-                        <img class="navVectors" src='../assets/training.png' alt="Vector">
+                        <img class="navVectors" src='training.png' alt="Vector">
                         <p>Technology Training Session</p>
                     </div>
                     <div class="col-3 whatWeDoCards" style="background-color: #4E2A84; box-shadow: 1px 4px 10px grey; color: white; margin: 0 35px">
-                        <img class="navVectors" src='../assets/workshop.png' alt="Vector">
+                        <img class="navVectors" src='workshop.png' alt="Vector">
                         <p>Activities and Workshop</p>
                     </div>
                     <div class="col-3 whatWeDoCards" style="background-color: white; box-shadow: 1px 4px 10px grey;">
-                        <img class="navVectors" src='../assets/supp.png' alt="Vector">
+                        <img class="navVectors" src='notebook.png' alt="Vector">
                         <p>Tech Support</p>
                     </div>
                 </div>
@@ -95,10 +109,10 @@
                 <div class="row" style="display: flex; justify-content: space-around; width: 100%;">
                     <div class="col-1"></div>
                     <div class="col">
-                        <div style="width: 597px; background-color: transparent;">
-                            <div>
+                        <div style="width: 597px; background-color: orange;">
+                            <div class="ratio ratio-16x9">
                                 <!-- Replace VIDEO_ID with the actual video ID from YouTube -->
-                                <iframe style="width: 100%; aspect-ratio: 16/9" src="https://www.youtube.com/embed/s43X4yHn8G0" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/s43X4yHn8G0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
@@ -177,7 +191,7 @@
     </div>
     <div id="contactUs" class="main row contactForm">
         <div class="contactUsCard2">
-            <form method="POST" class="row form-card">
+            <form method="POST"  action="{% url 'contact_view' %}" class="row form-card">
             <!-- <form method="POST" class="row form" style="width: 100%; display: flex; justify-content: center"> -->
                 <!-- {% csrf_token %} -->
                 <h4 style="color: #252B42; text-align: center">
@@ -216,7 +230,7 @@
     <div style="background: #11112a; padding: 60px 0">
         <div class="main" style="margin: 0 auto; display: grid">
           <div class="copyrightContainer" style="display: grid; justify-content: center; justify-items: center">
-            <img src="../assets/MYD Technology Logo.png" alt="MYD Technology.">
+            <img src='MYD Technology Logo.png'alt="MYD Technology.">
             <p
               class="copyrightContainerText"
               style="font-family: Helvetica; text-align: center; width: 100%; margin-top: 20px">
@@ -225,26 +239,55 @@
           </div>
         </div>
     </div>
-</template>
+    
+    <!-- {% if form_submitted %}
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Form submitted successfully!</p>
+        </div>
+    </div>
+    {% endif %} -->
 
-<script>
-import InterviewBuilder from "@/assets/logo.svg"
+    <!-- Bootstrap JS and dependencies -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        function navigate_to(targetId){
+            const targetElement = document.getElementById(targetId);
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
 
-export default{
-  data() {
-    return{
-      defaultImage: InterviewBuilder
-    }
-  }
-}
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
 
-</script>
+            modal.style.display = "block";
 
-<style scoped>
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
 
-</style>
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            
+        });
+    </script>
+</body>
 <style>
 
 body {
@@ -337,12 +380,12 @@ p {
 }
 
 #heroSection{
-    background-image: url('../assets/backgroundheader.png') !important; 
+    background-image: url('backgroundheader.png') !important; 
     background-size: 100% 100%; 
     background-position: center;
 }
 #projectSection{
-    background-image: url('../assets/back3.png') !important; 
+    background-image: url('back3.png') !important; 
     background-size: 100% 100%; 
     background-position: center; 
     color: white;
@@ -397,12 +440,12 @@ p {
 .visionCard1{
     width: 48%;
     padding: 20px;
-    background-image: url('../assets/card-left.png'); background-size: 100% 100%; background-position: center;
+    background-image: url('card-left.png'); background-size: 100% 100%; background-position: center;
 }
 .visionCard2{
     width: 48%;
     padding: 20px;
-    background-image: url('../assets/card-right.png'); background-size: 100% 100%; background-position: center
+    background-image: url('card-right.png'); background-size: 100% 100%; background-position: center
 }
 .visionCardTitle{
     text-align: left; font-size: 20px; line-height: 22px; font-weight: bold; text-decoration: underline
@@ -477,8 +520,7 @@ p {
     border-color: grey;
 }
 .navVectors{
-    height: 48px;
-    aspect-ratio: 1/1;
+    height: 48px; width: 48px;
     margin-bottom: 10px !important
 }
 .statusBar{
@@ -687,13 +729,13 @@ p {
     .visionCard1{
         width: 100%;
         padding: 20px;
-        background-image: url('../assets/card-left.png'); background-size: 100% 100%; background-position: center;
+        background-image: url('card-left.png'); background-size: 100% 100%; background-position: center;
     }
     .visionCard2{
         width: 100%;
         padding: 20px;
         margin-top: 10px;
-        background-image: url('../assets/card-right.png'); 
+        background-image: url('card-right.png'); 
         background-size: 100% 100%; background-position: center
     }
     .visionCardTitle{
@@ -1260,3 +1302,5 @@ h2::after {
     margin-left: 0 !important;
 }
 </style>
+
+</html>
