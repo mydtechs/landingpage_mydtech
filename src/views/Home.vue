@@ -98,7 +98,7 @@
                         <div style="width: 597px; background-color: transparent;">
                             <div>
                                 <!-- Replace VIDEO_ID with the actual video ID from YouTube -->
-                                <iframe style="width: 100%; aspect-ratio: 16/9" src="https://www.youtube.com/embed/s43X4yHn8G0" allowfullscreen></iframe>
+                                <iframe style="width: 100%; aspect-ratio: 16/9" src="https://www.youtube.com/embed/UJScd3m6glY" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
